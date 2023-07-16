@@ -78,24 +78,24 @@ public class CharacterMovement : MonoBehaviour
     }
     void animate()
     {
-        if (Input.GetAxis("Vertical") == 1)
-        {
-            playerAnimator.SetBool("Walk", true);
-            walkforward = true;
-        }
-        else
-        {
-            playerAnimator.SetBool("Walk", false);
-            walkforward = false;
-        }
-        if (Input.GetAxis("Vertical") == -1)
-        {
-            playerAnimator.SetBool("WalkBackWard", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("WalkBackWard", false);
-        }
+        //if (Input.GetAxis("Vertical") == 1)
+        //{
+        //    playerAnimator.SetBool("Walk", true);
+        //    walkforward = true;
+        //}
+        //else
+        //{
+        //    playerAnimator.SetBool("Walk", false);
+        //    walkforward = false;
+        //}
+        //if (Input.GetAxis("Vertical") == -1)
+        //{
+        //    playerAnimator.SetBool("WalkBackWard", true);
+        //}
+        //else
+        //{
+        //    playerAnimator.SetBool("WalkBackWard", false);
+        //}
         
 
     }

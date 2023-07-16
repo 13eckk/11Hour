@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.UI;
 public class InsanityCore : MonoBehaviour
 {
 
     [SerializeField, Range(0, 3)] int sanityLevel;
-    [SerializeField, Range(0, 100)] float sanityPercent;
+    [SerializeField, Range(0, 20)] public float sanityPercent;
     [SerializeField] bool canSpawnEntity;
     [SerializeField] GameObject entity;
+    [SerializeField] GameObject entityPrefab;
     [SerializeField] int entityNumber = 0;
+    [SerializeField] Volume visionVolume;
+    [SerializeField] VolumeProfile normal, sanity;
+    [SerializeField] Slider insanityBar;
 
     // Start is called before the first frame update
     void Start()
@@ -20,43 +26,29 @@ public class InsanityCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        insanityBar.value = sanityPercent;
         sanityPercent -= Time.deltaTime;
+        
         //CORE Sanity Effect and Detail
         switch (sanityPercent)
         {
 
-            case < 30:
-                sanityLevel = 3;
-                SpawnEntity(true);
-                break;
-            case < 50:
-                sanityLevel = 2;
-                SpawnEntity(false);
-                break;
-            case < 70:
+            case < 10:
                 sanityLevel = 1;
-                SpawnEntity(false);
+                
+                visionVolume.profile = sanity;
                 break;
-            case > 70:
+            case > 10:
                 sanityLevel = 0;
-                SpawnEntity(false);
+                visionVolume.profile = normal;
                 break;
+
         }
     }
-    void SpawnEntity(bool canspawn)
-    {
-        //if (canspawn&&canSpawnEntity&& entityNumber < 6)
-        //{
-
-        //        int x = Random.Range(-5, 5);
-        //        int z = Random.Range(-5, 5);
-        //        GameObject E = Instantiate(entity, new Vector3(x, 1, z), Quaternion.identity);
-        //        entityNumber += 1;        
-        //}
-    }
+    
     void SanityMainEffect()
     {
-
+        
 
     }
     void SanitySideEffect()
